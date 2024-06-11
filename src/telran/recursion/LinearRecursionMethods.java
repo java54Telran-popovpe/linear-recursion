@@ -31,18 +31,15 @@ public class LinearRecursionMethods {
 	 * aditional functions if any with the same limitations
 	 */
 	public static int pow( int a, int b) {
+		int positiveBase = Math.abs(a);
 		if ( b < 0 )
 			throw new IllegalArgumentException();
 		int res = 1;
 		if ( b != 0 )
-			res = mult(a, pow( a, b - 1 ));
-		return  res;
+			res = product(positiveBase, pow( positiveBase, b - 1 ));
+		return  a < 0 && b % 2 != 0 ? -res : res;
 	}
-	
-	private static int mult(int a, int b) {
-		int arithmeticProduct = product( Math.abs(a), Math.abs(b));
-			return a < 0 ^ b < 0 ? Math.negateExact( arithmeticProduct ) : arithmeticProduct;
-	}
+
 	private static int product(int a, int b) {
 		int res = a;
 		if ( b != 1) 
